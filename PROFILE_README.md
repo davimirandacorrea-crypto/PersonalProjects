@@ -33,7 +33,8 @@ Apaixonado por IA, cibersegurança e sistemas embarcados. Construo soluções qu
 | Projeto | Descrição | Stack |
 |:--------|:----------|:------|
 | 🧠 **CalmIA** | Plataforma de saúde mental para adolescentes com gamificação e IA generativa | React · FastAPI · Claude AI · AWS |
-| 💧 **AquaWatch** | Sistema IoT de detecção de desperdício de água com dashboard em tempo real | C# · Raspberry Pi · Sensores IoT |
+| 💧 **HydroSense** | Sistema IoT de detecção de desperdício de água com dashboard em tempo real | C# · Raspberry Pi · Sensores IoT |
+| 🎮 **Quovra** | Plataforma gamificada de desenvolvimento pessoal com agentes de IA para jovens brasileiros | HTML/CSS · JavaScript · Claude AI |
 
 ---
 
@@ -57,8 +58,7 @@ Apaixonado por IA, cibersegurança e sistemas embarcados. Construo soluções qu
 ### Contato
 
 [![Gmail](https://img.shields.io/badge/davi.miranda.correa@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:davi.miranda.correa@gmail.com)
-[![Portfólio](https://img.shields.io/badge/Portfólio-7c3aed?style=for-the-badge&logo=google-chrome&logoColor=white)](SEU_LINK_GOOGLE_SITES_AQUI)
-
+[![Portfólio](https://img.shields.io/badge/Portfólio-7c3aed?style=for-the-badge&logo=google-chrome&logoColor=white)](https://sites.google.com/view/davi-miranda/inicio)
 <div align="center">
 
 ![footer](https://capsule-render.vercel.app/api?type=waving&color=7c3aed,06b6d4&height=100&section=footer)
