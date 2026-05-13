@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davi Corrêa — Engenheiro de Computação</title>
+    <style>
+        :root {
+            --bg: #08080f;
+            --bg-card: #0f0f1c;
+            --primary: #7c3aed;
+            --secondary: #06b6d4;
+            --accent: #a855f7;
+            --glow: rgba(124, 58, 237, 0.35);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: rgba(124, 58, 237, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient glow background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 15% 25%, rgba(124,58,237,0.09) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 75%, rgba(6,182,212,0.06) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8,8,15,0.8);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.25s;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* ── SECTIONS ── */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: none;
+            padding: 7rem 10vw 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: rgba(124,58,237,0.12);
+            border: 1px solid rgba(124,58,237,0.3);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            color: var(--accent);
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero-name {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #ffffff 20%, #c4b5fd 60%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero-sub span {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .hero-desc {
+            max-width: 520px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Typing cursor */
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.1em;
+            background: var(--secondary);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: blink 0.85s step-end infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .cta-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.75rem;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            border: none;
+            box-shadow: 0 0 22px var(--glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 38px var(--glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .awards-row {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .award-chip {
+            padding: 0.35rem 0.9rem;
+            background: rgba(6,182,212,0.07);
+            border: 1px solid rgba(6,182,212,0.18);
+            border-radius: 999px;
+            font-size: 0.76rem;
+            color: var(--secondary);
+        }
+
+        /* ── SECTION HEADER ── */
+        .sec-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: monospace;
+        }
+
+        .sec-title {
+            font-size: clamp(1.6rem, 3vw, 2.1rem);
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── PROJECTS ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(124,58,237,0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 16px 48px rgba(124,58,237,0.1);
+        }
+
+        .card:hover::after { opacity: 1; }
+
+        .card-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+        .tag {
+            padding: 0.18rem 0.6rem;
+            background: rgba(124,58,237,0.1);
+            border: 1px solid rgba(124,58,237,0.2);
+            border-radius: 5px;
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-family: monospace;
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .skill-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+
+        .skill-group-name {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--primary);
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        .contact-wrap { text-align: center; }
+
+        .contact-card {
+            background: var(--bg-card);
+            border-radius: 22px;
+            padding: 3rem 2rem;
+            max-width: 580px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Gradient border trick */
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 23px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: -1;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── FADE IN ── */
+        .fade {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            #hero { padding: 6rem 1.5rem 3rem; }
+            nav { padding: 0.9rem 1.25rem; }
+            .nav-links { gap: 1.25rem; }
+            .contact-card { padding: 2rem 1.25rem; }
+            .wrapper { padding: 4rem 1.25rem; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <span class="nav-logo">davi.corrêa</span>
+        <ul class="nav-links">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <span class="hero-badge">Disponível para oportunidades</span>
+        <h1 class="hero-name">Davi de Miranda Corrêa</h1>
+        <p class="hero-sub">
+            Engenharia da Computação · <span>CEUB</span> · Brasília, DF
+        </p>
+        <p class="hero-desc">
+            Estudante apaixonado por tecnologia, com trajetória marcada por prêmios nacionais em Robótica. Construindo soluções criativas na interseção entre software, IA e impacto real.
+        </p>
+        <div class="cta-row">
+            <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+            <a href="mailto:davi.miranda.correa@gmail.com" class="btn btn-outline">Entrar em Contato</a>
+        </div>
+        <div class="awards-row">
+            <span class="award-chip">🥇 OBR Inovação 2019</span>
+            <span class="award-chip">🥉 OBR Robótica 2021</span>
+            <span class="award-chip">🦘 Canguru de Matemática 2023</span>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ABOUT -->
+    <div class="wrapper fade" id="about">
+        <p class="sec-label">// sobre mim</p>
+        <h2 class="sec-title">Quem sou eu</h2>
+        <p style="max-width: 660px; color: var(--muted); font-size: 1rem; line-height: 1.85;">
+            Sou Davi, estudante de <strong style="color:var(--text)">Engenharia da Computação no CEUB</strong> com trajetória marcada por reconhecimentos nacionais em Robótica. Tenho base técnica em desenvolvimento de software — do front-end ao C# para sistemas embarcados — e uma grande curiosidade por <strong style="color:var(--text)">Inteligência Artificial e Cibersegurança</strong>. Inglês avançado, perfil colaborativo e voltado à inovação tecnológica.
+        </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <div class="wrapper fade" id="projects">
+        <p class="sec-label">// projetos</p>
+        <h2 class="sec-title">O que estou construindo</h2>
+        <div class="projects-grid">
+
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3 class="card-title">CalmIA</h3>
+                <p class="card-desc">
+                    Plataforma de saúde mental para adolescentes que une <strong style="color:var(--text)">gamificação e IA generativa</strong>. O progresso do usuário na vida real reflete-se em um avatar 3D numa jornada interativa rumo ao equilíbrio pessoal.
+                </p>
+                <div class="tags">
+                    <span class="tag">React 18</span>
+                    <span class="tag">Three.js</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Claude AI</span>
+                    <span class="tag">AWS</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💧</div>
+                <h3 class="card-title">AquaWatch</h3>
+                <p class="card-desc">
+                    Sistema <strong style="color:var(--text)">IoT de detecção de desperdício de água</strong> em tempo real. Sensores de fluxo integrados a um dashboard em C# que monitora consumo, emite alertas e aciona válvulas automaticamente.
+                </p>
+                <div class="tags">
+                    <span class="tag">C#</span>
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">IoT</span>
+                    <span class="tag">Sensores</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SKILLS -->
+    <div class="wrapper fade" id="skills">
+        <p class="sec-label">// habilidades</p>
+        <h2 class="sec-title">Stack & Ferramentas</h2>
+        <div class="skills-grid">
+
+            <div class="skill-group">
+                <p class="skill-group-name">Frontend</p>
+                <div class="skill-item"><span class="dot"></span> HTML & CSS</div>
+                <div class="skill-item"><span class="dot"></span> JavaScript</div>
+                <div class="skill-item"><span class="dot"></span> TypeScript</div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-name">Backend & Sistemas</p>
+                <div class="skill-item"><span class="dot"></span> C</div>
+                <div class="skill-item"><span class="dot"></span> Java</div>
+                <div class="skill-item"><span class="dot"></span> C#</div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-name">IA & Produtividade</p>
+                <div class="skill-item"><span class="dot"></span> Claude / Gemini / GPT</div>
+                <div class="skill-item"><span class="dot"></span> Manus / NotebookLM</div>
+                <div class="skill-item"><span class="dot"></span> Microsoft Office</div>
+            </div>
+
+            <div class="skill-group">
+                <p class="skill-group-name">Áreas de Interesse</p>
+                <div class="skill-item"><span class="dot"></span> Cibersegurança</div>
+                <div class="skill-item"><span class="dot"></span> IoT / Embarcados</div>
+                <div class="skill-item"><span class="dot"></span> Robótica Avançada</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <div class="wrapper fade contact-wrap" id="contact">
+        <p class="sec-label">// contato</p>
+        <h2 class="sec-title">Vamos conversar?</h2>
+        <div class="contact-card">
+            <p>
+                Estou aberto a oportunidades de estágio, freelas e projetos colaborativos.<br>
+                Se quiser trocar uma ideia ou propor algo, pode chamar!
+            </p>
+            <div class="contact-links">
+                <a href="mailto:davi.miranda.correa@gmail.com" class="btn btn-primary">Email</a>
+                <a href="https://github.com/davimirandacorrea-crypto" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
+                <a href="SEU_LINK_GOOGLE_SITES_AQUI" class="btn btn-outline" target="_blank" rel="noopener">Portfólio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Davi de Miranda Corrêa &mdash; Brasília, DF &mdash; 2026</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver(
+            (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+            { threshold: 0.12 }
+        );
+        document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
