@@ -58,6 +58,7 @@ Apaixonado por IA, cibersegurança e sistemas embarcados. Construo soluções qu
 ### Contato
 
 [![Gmail](https://img.shields.io/badge/davi.miranda.correa@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:davi.miranda.correa@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/davi-miranda-correa-155425214/)
 [![Portfólio](https://img.shields.io/badge/Portfólio-7c3aed?style=for-the-badge&logo=google-chrome&logoColor=white)](https://sites.google.com/view/davi-miranda/inicio)
 <div align="center">
 
