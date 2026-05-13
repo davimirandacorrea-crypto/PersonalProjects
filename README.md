@@ -8,7 +8,8 @@ Medalhista nacional em Robótica · Buscando primeira oportunidade em tecnologia
 | Projeto | Descrição |
 |:--------|:----------|
 | 🧠 **CalmIA** | Plataforma de saúde mental para adolescentes com gamificação e IA generativa |
-| 💧 **AquaWatch** | Sistema IoT de monitoramento e detecção de desperdício de água |
+| 💧 **HydroSense** | Sistema IoT de detecção de desperdício de água com dashboard em tempo real |
+| 🎮 **Quovra** | Plataforma gamificada de desenvolvimento pessoal com agentes de IA para jovens brasileiros |
 
 ## Contato
 
